@@ -1,3 +1,5 @@
+import { debug } from "./util.js";
+
 // Add this as a hook on "updateActor"
 
 export default async function wounded(actor, update, options, userId) {
@@ -7,6 +9,7 @@ export default async function wounded(actor, update, options, userId) {
   // only run hook if the HP value was changed
   if (getProperty(update, "data.attributes.hp.value") === undefined) return;
 
+  debug("actor HP updated, checking for wounded/dead states");
   const ei = game.dfreds.effectInterface;
   const hp = actor.data.data.attributes.hp;
 
@@ -15,6 +18,7 @@ export default async function wounded(actor, update, options, userId) {
     const isBloodied = 0 < hp.value && hp.value <= hp.max / 2;
     const hasEffect = await ei.hasEffectApplied("Wounded", actor.uuid);
 
+    debug(`isBloodied: ${isBloodied}, hasEffect: ${hasEffect}`);
     if (isBloodied !== hasEffect)
       await ei.toggleEffect("Wounded", { uuids: [actor.uuid] });
   }
@@ -25,6 +29,7 @@ export default async function wounded(actor, update, options, userId) {
     const effectName = actor.type === "character" ? "Unconscious" : "Dead";
     const hasEffect = await ei.hasEffectApplied(effectName, actor.uuid);
 
+    debug(`isDead: ${isDead}, hasEffect: ${hasEffect}`);
     if (isDead !== hasEffect)
       await ei.toggleEffect(effectName, { overlay: true, uuids: [actor.uuid] });
   }
