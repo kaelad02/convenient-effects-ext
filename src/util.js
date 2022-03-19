@@ -1,4 +1,4 @@
-const MODULE_ID = "convenient-effects-ext";
+export const MODULE_ID = "convenient-effects-ext";
 
 export function log(...args) {
   console.log(MODULE_ID, "|", ...args);
