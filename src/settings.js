@@ -11,7 +11,7 @@ export function initSettings() {
     config: true,
     type: Boolean,
     default: false,
-    onChange: () => window.location.reload(),
+    requiresReload: true,
   });
 
   // fetch settings
