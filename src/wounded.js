@@ -7,11 +7,11 @@ export default async function wounded(actor, update, options, userId) {
   if (userId !== game.user.id) return;
 
   // only run hook if HP was changed (any of them)
-  if (getProperty(update, "data.attributes.hp") === undefined) return;
+  if (getProperty(update, "system.attributes.hp") === undefined) return;
 
   debug("actor HP updated, checking for wounded/dead states");
   const ei = game.dfreds.effectInterface;
-  const hp = actor.data.data.attributes.hp;
+  const hp = actor.system.attributes.hp;
 
   // Bloodied
   if (!actor.hasPlayerOwner) {
