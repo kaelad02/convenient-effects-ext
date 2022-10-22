@@ -1,19 +1,30 @@
 {
-  "name": "convenient-effects-ext",
+  "id": "convenient-effects-ext",
   "title": "Convenient Effects Extensions",
   "description": "Add some extra functionality to CE.",
-  "author": "kaelad",
-  "version": "0.1",
-  "minimumCoreVersion": "0.8.9",
-  "compatibleCoreVersion": "9",
-  "dependencies": [
+  "authors": [
     {
-      "name": "dfreds-convenient-effects"
+      "name": "kaelad",
+      "discord": "kaelad#1693"
     }
   ],
-  "systems": [
-    "dnd5e"
-  ],
+  "version": "0.1",
+  "compatibility": {
+    "minimum": 10,
+    "verified": 10
+  },
+  "relationships": {
+    "systems": [
+      {
+        "id": "dnd5e"
+      }
+    ],
+    "requires": [
+      {
+        "id": "dfreds-convenient-effects"
+      }
+    ]
+  },
   "esmodules": [
     "src/module.js"
   ],
