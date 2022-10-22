@@ -10,6 +10,4 @@ Hooks.once("init", () => {
 });
 
 // register a debug flag with Developer Mode
-Hooks.once("devModeReady", (api) => {
-  api.registerPackageDebugFlag(MODULE_ID);
-});
+Hooks.once("devModeReady", (api) => api.registerPackageDebugFlag(MODULE_ID));

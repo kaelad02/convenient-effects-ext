@@ -19,8 +19,7 @@ export default async function wounded(actor, update, options, userId) {
     const hasEffect = await ei.hasEffectApplied("Wounded", actor.uuid);
 
     debug(`isBloodied: ${isBloodied}, hasEffect: ${hasEffect}`);
-    if (isBloodied !== hasEffect)
-      await ei.toggleEffect("Wounded", { uuids: [actor.uuid] });
+    if (isBloodied !== hasEffect) await ei.toggleEffect("Wounded", { uuids: [actor.uuid] });
   }
 
   // Unconscious or Dead
